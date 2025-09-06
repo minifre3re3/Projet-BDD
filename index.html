@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Recherche</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50; /* Fond bleu foncé */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.2); /* Fond transparent */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2); /* Ombre blanche */
+            transform: perspective(1000px) rotateX(20deg); /* Effet 3D */
+        }
+        
+        h3 {
+            text-align: center;
+            color: #ecf0f1; /* Texte blanc */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre douce */
+        }
+        
+        label {
+            font-weight: bold;
+            color: #ecf0f1; /* Texte blanc */
+            margin-top: 10px;
+            display: block;
+        }
+        
+        input[type="text"] {
+            padding: 15px;
+            width: 300px;
+            border: none;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.2); /* Fond transparent */
+            backdrop-filter: blur(10px); /* Effet flou */
+            color: #ecf0f1; /* Texte blanc */
+        }
+        
+        button[type="submit"] {
+            padding: 15px 30px;
+            background-color:#2c3e50;  /* Bouton gris */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+            font-size: 18px;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #2980b9; /* Effet au survol */
+        }
+
+        @media ((max-width: 500px) and (min-width: 350px)) {/* si la taille entre 500 est 350*/
+
+   
+    .container { /* change le container */
+        width: 270px;
+        padding: 25px;
+       
+        
+    }
+
+    .container h1 { /* change titre dans le container */
+        font-size: 21px; 
+    }
+    .container input[type="text"]{     /* change text field dans container */    
+        padding: 12px;
+        width: 95%;
+    }
+    
+    button[type="submit"]{  /* change boutton dans container */
+        width: 130px;
+    
+        font-size: 15px;
+        padding: 13px 25px;
+    }
+
+    
+}
+@media (max-width: 350px) and (min-width : 280px) {  /* si la taille entre 350 est 280*/
+    .container {
+        width: 80vw;
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 18px; 
+    }
+    .container input[type="text"]{
+        width: 95%;
+        padding: 10px;
+    
+    }
+    
+    button[type="submit"]{
+        width: 40%;
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+    label{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 280px){ /* si la taille <= 280*/
+
+    .container {
+        width: 80vw;
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 18px; 
+    }
+    .container input[type="text"]{
+        width: 95%;
+        padding: 10px;
+    
+    }
+  
+    button[type="submit"]{
+        width: 80;
+        font-size: 10px;
+        padding: 7px 13px;
+    }
+ 
+  
+
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>Rechercher dans la liste :</h3>
+
+        <label >Entrer le pseudo :</label>
+        <input type="text" id="pseudo" name="pseudo">
+        <button type="submit"  id="rech">Rechercher</button>
+        <br>
+        <button type="submit" onclick="window.location.href='liste.html'">liste</button>
+ 
+</div>
+<script>
+
+    var rechercheButton = document.getElementById("rech");
+    var pseudo = null;
+   
+    // Je fais référence à plusieurs fichiers HTML, la page détail ayant une structure detail_pseudo.html, afin de trouver les pages dynamiquement.
+    rechercheButton.addEventListener('click', (event) => {
+        pseudo =document.getElementById('pseudo').value;
+
+         if(pseudo == 'arn' ||pseudo == 'dask' ||pseudo == 'email' ||pseudo == 'jm' ||pseudo == 'mdupond' ||pseudo == 'toto'){
+            window.location.href = 'detail_'+pseudo+'.html'// si il existe le pseudo allez a sa page detail detail_pseudo.html,
+         } else{
+            event.preventDefault()
+            alert("Le pseudo n'existe pas");
+         }
+        });
+</script>
+</body>
+
+
+</html>

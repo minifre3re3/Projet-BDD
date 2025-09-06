@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50; /* Fond bleu foncé */
+       
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.2); /* Fond transparent */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2); /* Ombre blanche */
+            transform: perspective(1000px) rotateX(20deg); /* Effet 3D */
+             margin-bottom: 50px;
+        }
+
+      
+        
+        h1 {
+            text-align: center;
+            color: #ecf0f1; /* Texte blanc */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre douce */
+        }
+        
+        label {
+            font-weight: bold;
+            color: #ecf0f1; /* Texte blanc */
+            margin-top: 10px;
+            display: block;
+        }
+        
+        input[type="text"],
+        input[type="number"] {
+            padding: 15px;
+            width: 300px;
+            border: none;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.2); /* Fond transparent */
+            backdrop-filter: blur(10px); /* Effet flou */
+            color: #ecf0f1; /* Texte blanc */
+        }
+        
+        /* Bouton Mettre à jour stylé */
+        button[type="submit"] {
+            padding: 15px 30px;
+            background-color:#2c3e50;  /* Bouton gris */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+            font-size: 17px;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049; /* Effet au survol */
+        }
+
+        @media ((max-width: 700px) and (min-width: 350px)) { /* si la taille entre 700 est 350*/
+    .container {   /* change le container */
+        width: 75vw;
+        padding: 25px;
+    }
+
+    .container h1 {  /* change titre dans container */
+        font-size: 23px; 
+    }
+    .container input{    /* change text field dans container */
+        padding: 10px;
+        width: 210px;
+    }
+
+    .container button{ /* change boutton dans container */
+        width: 130px;
+        font-size: 15px;
+        padding: 12px 20px;
+    }
+
+}
+@media (max-width: 350px) { /* si la taille <= 350*/
+    .container {
+        width: 80vw;
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 18px; 
+    }
+    .container input{
+        padding: 10px;
+        width: 140px;
+    }
+    
+    .container button{
+        width: 100px;
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+    label{
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Afficher le pseudo dans un titre -->
+    <h1>Modifier les informations pour toto</h1>
+    
+    <!-- Formulaire pour mettre à jour les informations -->
+        <!-- Champ pour le prénom -->
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" value="Tom"><br>
+        
+        <!-- Champ pour le nom -->
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" value="Tonge"><br>
+        
+        <!-- Champ pour l'âge -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value="18"><br>
+        
+        <!-- Champ pour la ville -->
+        <label for="ville">Ville:</label>
+        <input type="text" id="ville" name="ville" value="Epinay"><br>
+        
+        <!-- Bouton de soumission du formulaire -->
+        <button type="submit" id = "btn" >Mettre à jour</button>
+   
+</div>
+
+</body>
+
+<script> /*  le javascript a la fin pour qu'il execute sans erreur*/
+    messageErreur='';
+    function hasNumber(nom){  
+        var charValues = nom.split('');
+        for(var i=0 ; i < charValues.length ; i++){
+            if(!isNaN(charValues[i]) || charValues[i] == ' ' ){ // si le cas
+                return true; // revoye vrai
+            }
+
+        }
+        return false;  // si on a termine l'iteration donc il exist pas des nombre alores renvoye vrai
+       
+
+    }
+        function validateForm() {
+            const prenom = document.getElementById('prenom').value;  // avoir les valeur dans les champs 
+            const nom = document.getElementById('nom').value;
+            const age = document.getElementById('age').value;
+            const ville = document.getElementById('ville').value;
+
+            if (isNaN(age) || age <= 0) {  //  test si l'age est valide ou pas
+                messageErreur='L\'age n\'est pas valide';  
+                return false;
+            }
+            
+            if (!prenom || !nom || !age || !ville) {     //  test si il sont vide ou pas
+                messageErreur='Nombre de champs insuffisant';                          
+                return false;
+            }
+            if( hasNumber(prenom) || hasNumber(nom) || hasNumber(ville) ){// test les var ville , nom, prenom , si il ont des nombre
+                    messageErreur='Syntaxe non compatible !'; 
+                    return false;
+            }
+            
+            return true;
+        }
+        const button = document.getElementById('btn' );
+        button.addEventListener('click', (event) => {
+            if (!validateForm() ) {   
+                event.preventDefault(); /* on execute pas*/         
+                alert(messageErreur); // affiche le type d'erreur
+            }else{
+                window.location.href = "detail_toto.html";
+            } 
+        });     
+
+    </script>
+</html>

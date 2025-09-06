@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des personnes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50; /* Fond bleu foncé */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.2); /* Fond transparent */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2); /* Ombre blanche */
+            transform: perspective(1000px) rotateX(20deg); /* Effet 3D */
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ecf0f1; /* Texte blanc */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre douce */
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            margin: 10px 0;
+            text-align: center; /* Centrer le texte */
+        }
+        
+        a {
+            color: #3498db; /* Lien bleu */
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.5em; /* Taille du texte */
+        }
+
+        a:hover {
+            color: #2980b9; /* Couleur au survol */
+        }
+        
+        p {
+            color: #ecf0f1; /* Texte blanc */
+            text-align: center;
+        }
+
+        @media ((max-width: 500px) and (min-width: 350px)) { /* si la taille entre 500 est 350*/
+    .container { /* change le container */
+        width: 260px;
+        padding: 25px;
+    }
+
+    .container h1 { /* change titre dans le container */
+        font-size: 24px; 
+    }
+    .container input[type="text"]{   /* change text field dans container */  
+        padding: 10px;
+        width: 200px;
+    }
+    
+    .container button{ /* change boutton dans container */
+        width: 100px;
+        font-size:15px;
+        padding: 12px 20px ;
+    }
+    
+}
+@media (max-width: 350px) {  /* si la taille <= 350*/
+    .container {
+        width: 210px;
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 18px; 
+    }
+    
+    button[type="submit"]{
+        width: 70px;
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    p{
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+                <h1>Liste des personnes</h1>
+                <ul>
+                  
+                        <li><a href="detail_dask.html">dask</a></li>
+                        <li><a href="detail_arn.html">arn</a></li>
+                        <li><a href="detail_jm.html">jm</a></li>
+                        <li><a href="detail_toto.html">toto</a></li>
+                        <li><a href="detail_email.html">email</a></li>
+                        <li><a href="detail_mdupond.html">mdupond</a></li>
+                 
+                </ul>
+    </div>
+</body>
+</html>
